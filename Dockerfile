@@ -7,6 +7,6 @@ COPY lib ./lib
 COPY templates ./templates
 COPY main.go .
 RUN CGO_ENABLED=0 go build -o ./myapp .
-FROM scratch
+FROM gcr.io/distroless/base
 COPY --from=builder /app/myapp /myapp
 CMD ["./myapp", "serve"]
